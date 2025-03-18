@@ -18,7 +18,7 @@ const Home = () => {
             />
           </div>
           <div className="space-x-8 mb-15">
-            <a href="https://front-fusion.vercel.app/" className="text-white text-lg hover:text-blue-400">Home</a>
+            <a href="https://front-fusion.vercel.app" className="text-white text-lg hover:text-blue-400">Home</a>
             <a href="/about" className="text-white text-lg hover:text-blue-400">About Us</a>
             <a href="/contact" className="text-white text-lg hover:text-blue-400">Contact Us</a>
           </div>
