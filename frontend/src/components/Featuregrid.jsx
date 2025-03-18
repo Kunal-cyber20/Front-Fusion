@@ -16,10 +16,9 @@ const features = [
 
 const FeatureGrid = () => {
   return (
-    <section className="relative py-16 bg-black text-white text-center overflow-hidden">
-      
-      {/* Particles Effect */}
-      <div className="absolute inset-0 pointer-events-none">
+    <section className="relative py-16 mb-1 top-[-130] bg-black text-white text-center overflow-hidden">
+      {/* Particles Effect (Behind Content) */}
+      <div className="absolute inset-0 -z-10">
         <Particles
           particleColors={['#ffffff', '#ffffff']}
           particleCount={1000}
@@ -33,9 +32,9 @@ const FeatureGrid = () => {
       </div>
 
       {/* Features Section Content */}
-      <div className="relative z-10">
-        <h2 className="text-5xl font-bold mb-12">🚀 Features</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4 ">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12">Why Choose Front-Fusion?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <div 
               key={index} 
