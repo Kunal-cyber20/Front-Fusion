@@ -28,7 +28,7 @@ const Home = () => {
       {/* Aurora component */}
       <Aurora
         colorStops={["#4400ff", "#b41d84", "#3adfc3"]}
-        blend={0.8}
+        blend={1.5}
         amplitude={3.0}
         speed={0.5}
       />
