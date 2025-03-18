@@ -41,7 +41,7 @@ const Home = () => {
           particleSpread={40}
           speed={0.2}
           particleBaseSize={90}
-          moveParticlesOnHover={false}
+          moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}
         />
