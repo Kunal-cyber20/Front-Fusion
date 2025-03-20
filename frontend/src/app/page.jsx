@@ -10,8 +10,7 @@ import Navbar from "@/components/Navbar"; // Import the Navbar component
 const Home = () => {
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-black">
-      {/* Navbar */}
-      <Navbar />
+     
 
       {/* Background Effects */}
       <Aurora colorStops={["#4400ff", "#b41d84", "#3adfc3"]} blend={3.5} amplitude={4.0} speed={0.5} />

@@ -1,33 +1,13 @@
 import React from 'react';
 import Aurora from '@/components/Aurora';  // Assuming Aurora component is already created
 import TiltedCard from '@/components/Tiltcard';  // Assuming you already have this component
+import Navbar from '@/components/Navbar';
 
 function ContactUs() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Menu Bar (Navbar) */}
-      <nav className="fixed top-0 left-0 w-full  p-4 z-50">
-        <div className="flex justify-between items-center max-w-6xl mx-auto">
-        <div className="text-white text-2xl font-bold">
-        <div className="text-white text-2xl font-bold">
-        <div className="text-white text-2xl font-bold">
-  <img 
-    src="/wmremove-transformed-fotor-bg-remover-2025031814434.png" 
-    alt="Logo" 
-    className="h-28 w-auto object-contain" // Adjust height and add object-contain
-  />
-</div>
-</div>
-
-</div>
-          <div className=" space-x-8 mb-15">
-            <a href="https://front-fusion.vercel.app" className="text-white text-lg hover:text-blue-400">Home</a>
-            <a href="/about" className="text-white text-lg hover:text-blue-400">About Us</a>
-            <a href="/contact" className="text-white text-lg hover:text-blue-400">Contact</a>
-          </div>
-        </div>
-      </nav>
-
+      
+     
       {/* Aurora Background */}
       <Aurora
         colorStops={["#4400ff", "#b41d84", "#3adfc3"]}  // Custom colors for the Aurora effect
