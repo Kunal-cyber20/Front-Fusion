@@ -1,6 +1,6 @@
 import React from 'react';
 import Aurora from '@/components/Aurora';
-
+import Navbar from '@/components/Navbar';
 const Signup = () => {
   return (
     <div className='relative h-screen bg-black'>
