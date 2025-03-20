@@ -5,7 +5,7 @@ import Aurora from "@/components/Aurora";
 import Particles from "@/components/Particles";
 import FeatureGrid from "@/components/Featuregrid";
 import Promptbar from "@/components/Promptbar";
-import Navbar from "@/components/Navbar"; // Import the Navbar component
+import Navbar from "@/components/Navbar"; // Import the Navbar 
 
 const Home = () => {
   return (
