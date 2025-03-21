@@ -22,7 +22,7 @@ const MessageInput = () => {
 
         <input 
           type="text" 
-          placeholder="Write your message..." 
+          placeholder="Prompt Your Ideas Here!..." 
           className="message-input" 
         />
         
