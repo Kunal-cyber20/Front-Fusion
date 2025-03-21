@@ -42,10 +42,10 @@ const Login = () => {
     
             {/* Signup Button */}
             <div className="mt-6 mb-1 text-center">
-              <button className='bg-violet-500 mx-10 hover:bg-green-600 text-white rounded p-2'>
+              <button className='bg-violet-700 mx-10 hover:bg-green-600 text-white rounded p-2'>
                 Login
               </button>
-              <button className='bg-violet-500 mr-5 hover:bg-red-500 text-white rounded p-2'>
+              <button className='bg-violet-700 mr-5 hover:bg-red-500 text-white rounded p-2'>
                 Forgot Password?
               </button>
             </div>

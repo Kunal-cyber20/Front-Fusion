@@ -286,7 +286,7 @@ const Navbar = () => {
                   {/* Button Group */}
                   <div className="flex flex-wrap items-center gap-x-1.5">
                     <a
-                      className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-700 bg-transparent text-gray-200 shadow-2xs hover:bg-violet-500 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-violet-500"
+                      className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-700 bg-transparent text-gray-200 shadow-2xs hover:bg-violet-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-violet-500"
                       href="/login"
                     >
                       Log in

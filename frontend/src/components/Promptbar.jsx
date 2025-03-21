@@ -1,219 +1,159 @@
-'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-const Input = () => {
-  const [isMounted, setIsMounted] = useState(false);
+const MessageInput = () => {
+  const fileInputRef = useRef(null);
 
-  // Ensure the component only renders after mounting to avoid the flash
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null; // Render nothing until the component is mounted
-  }
+  const handleFileClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   return (
     <StyledWrapper>
-      <div className="messageBox">
-        <div className="fileUploadWrapper">
-          <label htmlFor="file">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 337 337">
-              <circle strokeWidth={20} stroke="#6c6c6c" fill="none" r="158.5" cy="168.5" cx="168.5" />
-              <path strokeLinecap="round" strokeWidth={25} stroke="#6c6c6c" d="M167.759 79V259" />
-              <path strokeLinecap="round" strokeWidth={25} stroke="#6c6c6c" d="M79 167.138H259" />
-            </svg>
-            <span className="tooltip">Upload your files and more</span>
-          </label>
-          <input type="file" id="file" name="file" />
-        </div>
-        <input required placeholder="Type your prompt here..." type="text" id="messageInput" />
-        <button id="sendButton">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-            <path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888" />
-            <path strokeLinejoin="round" strokeLinecap="round" strokeWidth="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888" />
-          </svg>
+      <div className="message-box">
+        <button type="button" className="icon-button" onClick={handleFileClick}>
+          <PlusIcon />
+          <div id="container-stars">
+            <div id="stars" />
+          </div>
+        </button>
+
+        <input 
+          type="text" 
+          placeholder="Write your message..." 
+          className="message-input" 
+        />
+        
+        <input type="file" id="file" name="file" className="visually-hidden" ref={fileInputRef} />
+
+        <button type="submit" className="icon-button send-button">
+          <SendIcon />
+          <div id="glow">
+            <div className="circle" />
+            <div className="circle" />
+          </div>
         </button>
       </div>
     </StyledWrapper>
   );
 }
 
+const PlusIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24">
+    <path
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      d="M12 4v16M4 12h16"
+    />
+  </svg>
+);
+
+const SendIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24">
+    <path
+      stroke="currentColor"
+      strokeWidth="2"
+      fill="none"
+      d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
+    />
+  </svg>
+);
+
 const StyledWrapper = styled.div`
-  .messageBox {
-    width: 90%; /* Responsive width */
-    max-width: 600px; /* Maximum width for larger screens */
-    height: 50px; /* Fixed height */
+  .message-box {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
-    background-color: rgb(14, 13, 13);
-    padding: 0 120px;
-    border-radius: 30px;
-    border: 2px solid rgb(72, 236, 195);
-    margin: 0; /* Remove margin: 0 auto to stop centering */
+    width: 100%;
+    max-width: 600px;
+    height: 3rem;
+    background-size: 300% 300%;
+    backdrop-filter: blur(1rem);
+    border-radius: 5rem;
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border: double 4px transparent;
+    background-image: linear-gradient(#212121, #212121),
+      linear-gradient(
+        137.48deg,
+        #ffdb3b 10%,
+        #fe53bb 45%,
+        #8f51ea 67%,
+        #0044ff 87%
+      );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    padding: 0 1rem;
+    gap: 0.5rem;
   }
 
-  @media (max-width: 768px) {
-    .messageBox {
-      height: 45px; /* Slightly smaller height for tablets */
-      padding: 0 10px; /* Reduced padding */
-    }
-  }
-
-  @media (max-width: 480px) {
-    .messageBox {
-      height: 40px; /* Smaller height for mobile */
-      padding: 0 8px; /* Further reduced padding */
-    }
-  }
-
-  .messageBox:focus-within {
-    border: 2px solid rgb(216, 41, 41);
-  }
-
-  .fileUploadWrapper {
-    width: fit-content;
-    height: 100%;
+  .icon-button {
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  #file {
-    display: none;
-  }
-
-  .fileUploadWrapper label {
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    background: transparent;
     cursor: pointer;
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 
-  .fileUploadWrapper label svg {
-    height: 18px; /* Default icon size */
-  }
-
-  @media (max-width: 768px) {
-    .fileUploadWrapper label svg {
-      height: 16px; /* Smaller icon for tablets */
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 
-  @media (max-width: 480px) {
-    .fileUploadWrapper label svg {
-      height: 14px; /* Smaller icon for mobile */
+  .message-input {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0 1rem;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 
-  .fileUploadWrapper label svg path,
-  .fileUploadWrapper label svg circle {
-    transition: all 0.3s;
+  .send-button {
+    margin-left: auto;
+    &:hover {
+      color: #fe53bb;
+    }
   }
 
-  .fileUploadWrapper label:hover svg path {
-    stroke: #fff;
-  }
-
-  .fileUploadWrapper label:hover svg circle {
-    stroke: #fff;
-    fill: #3c3c3c;
-  }
-
-  .fileUploadWrapper label:hover .tooltip {
-    display: block;
-    opacity: 1;
-  }
-
-  .tooltip {
+  .visually-hidden {
     position: absolute;
-    top: -40px;
-    display: none;
-    opacity: 0;
-    color: white;
-    font-size: 10px;
-    text-wrap: nowrap;
-    background-color: #000;
-    padding: 6px 10px;
-    border: 1px solid #3c3c3c;
-    border-radius: 5px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.596);
-    transition: all 0.3s;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 
-  #messageInput {
-    width: 100%; /* Full width of the container */
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    padding-left: 10px;
-    color: white;
-    font-size: 14px; /* Default font size */
-  }
-
-  @media (max-width: 768px) {
-    #messageInput {
-      font-size: 13px; /* Smaller font size for tablets */
+  @keyframes gradient_301 {
+    0% {
+      background-position: 0% 50%;
     }
-  }
-
-  @media (max-width: 480px) {
-    #messageInput {
-      font-size: 12px; /* Smaller font size for mobile */
+    50% {
+      background-position: 100% 50%;
     }
-  }
-
-  #messageInput:focus ~ #sendButton svg path,
-  #messageInput:valid ~ #sendButton svg path {
-    fill: #3c3c3c;
-    stroke: white;
-  }
-
-  #sendButton {
-    width: fit-content;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  #sendButton svg {
-    height: 18px; /* Default icon size */
-    transition: all 0.3s;
-  }
-
-  @media (max-width: 768px) {
-    #sendButton svg {
-      height: 16px; /* Smaller icon for tablets */
+    100% {
+      background-position: 0% 50%;
     }
-  }
-
-  @media (max-width: 480px) {
-    #sendButton svg {
-      height: 14px; /* Smaller icon for mobile */
-    }
-  }
-
-  #sendButton svg path {
-    transition: all 0.3s;
-  }
-
-  #sendButton:hover svg path {
-    fill: #3c3c3c;
-    stroke: white;
   }
 `;
 
-export default Input;
+export default MessageInput;

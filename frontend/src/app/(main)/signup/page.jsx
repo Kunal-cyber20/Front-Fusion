@@ -51,7 +51,7 @@ const Signup = () => {
 
         {/* Signup Button */}
         <div className="mt-6 text-center">
-          <button className='mb-2 bg-violet-500 hover:bg-red-500 text-white rounded p-2'>
+          <button className='mb-2 bg-violet-700 hover:bg-red-500 text-white rounded p-2'>
             Sign Up
           </button>
         </div>
