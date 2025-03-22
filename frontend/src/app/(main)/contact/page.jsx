@@ -19,14 +19,14 @@ function ContactUs() {
 
       {/* Contact Us Section */}
       <div className="relative z-10 max-w-4xl mx-auto p-4 text-white">
-        <h1 className="text-4xl sm:text-5xl mt-18 font-bold text-center mb-6">Contact Us</h1>
+        <h1 className="text-4xl sm:text-5xl mt-2 font-bold text-center mb-6">Contact Us</h1>
         
         <div className="text-center mb-6">
           <p className="text-lg sm:text-xl">
             Let's start a conversation! How can we help you? 
           </p>
           <p className="text-lg sm:text-xl">
-            See our platform in action, give suggestions or report a problem which will help to improve.
+            See our platform in action, give suggestions or report a problem which will help us to improve.
           </p>
           
         </div>

@@ -1,10 +1,10 @@
-// app/page.js (or wherever your Home component is located)
 "use client";
 import React from "react";
 import Aurora from "@/components/Aurora";
 import Particles from "@/components/Particles";
 import FeatureGrid from "@/components/Featuregrid";
 import Promptbar from "@/components/Promptbar";
+import GradientText from "@/components/Gradienttext";
 import Navbar from "@/components/Navbar"; // Import the Navbar 
 
 const Home = () => {
@@ -32,10 +32,18 @@ const Home = () => {
         <h1 className="text-4xl md:text-7xl font-bold text-white mb-4 leading-tight">
           »»𝐅𝐫𝐨𝐧𝐭-𝐅𝐮𝐬𝐢𝐨𝐧 𝐀.𝐈««
         </h1>
-        <p className="mt-20 mb-18 text-xl md:text-5xl text-white/90">
-          Frontend Development Made Easy!
-        </p>
-        <div className="mb-50 mt-29 flex flex-col md:flex-row gap-4 md:gap-8">
+
+        <div className="mt-25 mb-18 text-xl md:text-5xl text-white/90">
+        <GradientText
+  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+  animationSpeed={3}
+  showBorder={false}
+  className="custom-class"
+>
+  Frontend Development Made Easy !
+</GradientText>
+        </div>
+        <div className="mb-50 mt-25 flex flex-col md:flex-row gap-4 md:gap-8">
           <Promptbar />
         </div>
       </div>
