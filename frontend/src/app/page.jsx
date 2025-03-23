@@ -6,6 +6,7 @@ import FeatureGrid from "@/components/Featuregrid";
 import Promptbar from "@/components/Promptbar";
 import GradientText from "@/components/Gradienttext";
 import Navbar from "@/components/Navbar"; // Import the Navbar 
+import TerminalSection from "@/components/TerminalAdd";
 
 const Home = () => {
   return (
@@ -28,26 +29,26 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full h-screen flex flex-col justify-center items-center text-center  mt-7 px-10 py-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight ">
+      <div className="relative w-full h-screen flex flex-col justify-center items-center text-center sm:px-10 mt-7 px-10 py-10">
+        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight ">
           »»Code Faster. Customize More. Build Better.««
         </h1>
 
-        <div className="mt-25 mb-18 text-xl md:text-5xl text-white/90">
+        <div className="mt-25 mb-18 text-2xl sm:text-2xl leading-tight md:text-5xl text-white/90">
         <GradientText
   colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
   animationSpeed={3}
   showBorder={false}
   className="custom-class"
 >
-  Frontend Development Made Easy !
+  Frontend Development Made Easy!
 </GradientText>
         </div>
-        <div className="mb-50 mt-25 flex flex-col md:flex-row gap-4 md:gap-8">
+        <div className="mb-50 mt-25 sm:mt-20 flex sm:flex-row flex-col md:flex-row gap-4 md:gap-8">
           <Promptbar />
         </div>
       </div>
-
+<TerminalSection /> 
       {/* Feature Grid Section */}
       <FeatureGrid />
     </div>
