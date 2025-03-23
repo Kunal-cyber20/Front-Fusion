@@ -39,7 +39,7 @@ function AboutUs() {
           <TiltedCard
             imageSrc="https://gradients.app/public/img/gradients_app.png"
             altText="About Us"
-            captionText="About Us"
+            captionText="Objectives"
             containerHeight="200px"
             containerWidth="400px"
             imageHeight="320px"

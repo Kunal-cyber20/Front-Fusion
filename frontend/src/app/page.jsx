@@ -9,7 +9,7 @@ import Navbar from "@/components/Navbar"; // Import the Navbar
 
 const Home = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-black">
+    <div className="relative w-full min-h-screen overflow-hidden bg-black ">
      
 
       {/* Background Effects */}
@@ -28,9 +28,9 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full h-screen flex flex-col justify-center items-center text-center px-4 mt-7">
-        <h1 className="text-4xl md:text-7xl font-bold text-white mb-4 leading-tight">
-          »»𝐅𝐫𝐨𝐧𝐭-𝐅𝐮𝐬𝐢𝐨𝐧 𝐀.𝐈««
+      <div className="relative w-full h-screen flex flex-col justify-center items-center text-center  mt-7 px-10 py-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight ">
+          »»Code Faster. Customize More. Build Better.««
         </h1>
 
         <div className="mt-25 mb-18 text-xl md:text-5xl text-white/90">

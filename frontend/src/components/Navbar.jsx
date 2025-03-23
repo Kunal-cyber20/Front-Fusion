@@ -8,10 +8,11 @@ const Navbar = () => {
           <nav className="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between md:gap-3 py-2 px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center gap-x-1">
               <a
-                className="flex-none font-semibold text-xl text-white focus:outline-hidden focus:opacity-80"
-                href="/#"
-                aria-label="Brand"
+                className="flex-none font-semibold text-3xl text-white focus:outline-hidden focus:opacity-80"
+                href="https://front-fusion.vercel.app/"
+                aria-label=""
               >
+                Front-Flow A.I
               </a>
               {/* Collapse Button */}
               <button
@@ -68,28 +69,7 @@ const Navbar = () => {
                 <div className="py-2 md:py-0 flex flex-col md:flex-row md:items-center gap-0.5 md:gap-1">
                   <div className="grow">
                     <div className="flex flex-col md:flex-row md:justify-end md:items-center gap-0.5 md:gap-1">
-                      <a
-                        className="p-2 flex items-center text-sm  text-white hover:bg-violet-500 rounded-lg focus:outline-hidden focus:bg-violet-500"
-                        href="https://front-fusion.vercel.app/"
-                        aria-current="page"
-                      >
-                        <svg
-                          className="shrink-0 size-4 me-3 md:me-2 block md:hidden"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={24}
-                          height={24}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                          <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                        </svg>
-                        Home Page
-                      </a>
+                      
                       {/* Dropdown */}
                       <div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] [--is-collapse:true] md:[--is-collapse:false]">
                         <button
