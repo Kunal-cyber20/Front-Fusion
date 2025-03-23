@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import styled from "styled-components";
 
 const MessageInput = () => {
   const fileInputRef = useRef(null);
@@ -15,60 +15,48 @@ const MessageInput = () => {
       <div className="message-box">
         <button type="button" className="icon-button" onClick={handleFileClick}>
           <PlusIcon />
-          <div id="container-stars">
-            <div id="stars" />
-          </div>
         </button>
 
         <input 
           type="text" 
-          placeholder="Prompt Your Ideas Here!..."
-          className="message-input" 
+          placeholder="Prompt Your Ideas Here!..." 
+          className="message-input"
         />
         
-        <input type="file" id="file" name="file" className="visually-hidden" ref={fileInputRef} />
+        <input type="file" className="visually-hidden" ref={fileInputRef} />
 
         <button type="submit" className="icon-button send-button">
           <SendIcon />
-          <div id="glow">
-            <div className="circle" />
-            <div className="circle" />
-          </div>
         </button>
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const PlusIcon = () => (
   <svg viewBox="0 0 24 24" width="24" height="24">
-    <path
-      stroke="currentColor"
-      strokeWidth="2"
-      fill="none"
-      d="M12 4v16M4 12h16"
-    />
+    <path stroke="currentColor" strokeWidth="2" fill="none" d="M12 4v16M4 12h16" />
   </svg>
 );
 
 const SendIcon = () => (
   <svg viewBox="0 0 24 24" width="24" height="24">
-    <path
-      stroke="currentColor"
-      strokeWidth="2"
-      fill="none"
-      d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
-    />
+    <path stroke="currentColor" strokeWidth="2" fill="none" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
   </svg>
 );
 
 const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+
   .message-box {
     display: flex;
     align-items: center;
     width: 100%;
     max-width: 600px;
-    height: 3rem;
+    min-height: 3rem;
     background-size: 300% 300%;
     backdrop-filter: blur(1rem);
     border-radius: 5rem;
@@ -76,13 +64,7 @@ const StyledWrapper = styled.div`
     animation: gradient_301 5s ease infinite;
     border: double 4px transparent;
     background-image: linear-gradient(#212121, #212121),
-      linear-gradient(
-        137.48deg,
-        #ffdb3b 10%,
-        #fe53bb 45%,
-        #8f51ea 67%,
-        #0044ff 87%
-      );
+      linear-gradient(137.48deg, #ffdb3b 10%, #fe53bb 45%, #8f51ea 67%, #0044ff 87%);
     background-origin: border-box;
     background-clip: content-box, border-box;
     padding: 0 1rem;
@@ -115,6 +97,7 @@ const StyledWrapper = styled.div`
     color: white;
     font-size: 1rem;
     padding: 0 1rem;
+    min-width: 50px;
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.6);
@@ -141,6 +124,37 @@ const StyledWrapper = styled.div`
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .message-box {
+      max-width: 90%;
+      padding: 0.5rem;
+    }
+    .icon-button {
+      width: 2rem;
+      height: 2rem;
+    }
+    .message-input {
+      font-size: 0.9rem;
+      padding: 0 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .message-box {
+      max-width: 95%;
+      padding: 0.3rem;
+    }
+    .icon-button {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+    .message-input {
+      font-size: 0.8rem;
+      padding: 0 0.5rem;
+    }
   }
 
   @keyframes gradient_301 {
