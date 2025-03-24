@@ -17,7 +17,7 @@ const Home = () => {
           particleColors={["#ffffff", "#ffffff"]}
           particleCount={20000}
           particleSpread={40}
-          speed={0.2}
+          speed={0.06}
           particleBaseSize={60}
           moveParticlesOnHover={true}
           alphaParticles={false}
