@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 const TerminalSection = () => {
   const [text, setText] = useState("");
+  const canvasRef = useRef(null);
   const commands = [
     "🔄 Booting up Front-Flow A.I...",
     "🚀 Connecting to server cloud...",
@@ -21,12 +22,66 @@ const TerminalSection = () => {
     "📊 Real-time analytics dashboard: Activated...",
     "📡 Syncing live data updates...",
     "🖥️ Deploying optimized UI to production...",
-    "✅ Deployment Successful! 🚀 Your site is now live!",
+    "✅ Deployment Successful! � Your site is now live!",
     "🎯 Monitoring system performance...",
     "🔔 Notifications enabled for future updates...",
     "✨ AI is now on standby, ready for new tasks...",
   ];
 
+  // Particle effect
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+    const colors = ['rgba(168, 85, 247, 0.5)', 'rgba(147, 51, 234, 0.5)', 'rgba(126, 34, 206, 0.5)'];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        speedX: Math.random() * 1 - 0.5,
+        speedY: Math.random() * 1 - 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        
+        // Reset particles that go off screen
+        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+        
+        ctx.fillStyle = particle.color;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Terminal text effect
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -42,26 +97,27 @@ const TerminalSection = () => {
 
   return (
     <FullScreenSection>
-        
-      {/* Terminal UI */}
-      <div className="terminal-wrapper">
-        <div className="purple-line" />
-        <div className="terminal">
-          <div className="terminal-header">
-            <div className="buttons">
-              <span className="red"></span>
-              <span className="yellow"></span>
-              <span className="green"></span>
+      <ParticlesBackground ref={canvasRef} />
+      <ContentWrapper>
+        <div className="terminal-wrapper">
+          <div className="purple-line" />
+          <div className="terminal">
+            <div className="terminal-header">
+              <div className="buttons">
+                <span className="red"></span>
+                <span className="yellow"></span>
+                <span className="green"></span>
+              </div>
+              <p>AI Console</p>
             </div>
-            <p>AI Console</p>
-          </div>
 
-          <div className="terminal-body">
-            <pre>{text}</pre>
-            <span className="blinking-cursor">█</span>
+            <div className="terminal-body">
+              <pre>{text}</pre>
+              <span className="blinking-cursor">█</span>
+            </div>
           </div>
         </div>
-      </div>
+      </ContentWrapper>
     </FullScreenSection>
   );
 };
@@ -70,34 +126,43 @@ const TerminalSection = () => {
 const FullScreenSection = styled.section`
   width: 100vw;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(88, 28, 135, 1) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+`;
+
+const ParticlesBackground = styled.canvas`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, #240046 0%, #5a189a 100%);
   padding: 20px;
-  position: relative;
-  overflow: hidden;
-  flex-direction: column; /* ✅ Ensures the turquoise line is properly positioned */
-
-  /* ✅ Turquoise Line - Separates from Upper Section */
-  .turquoise-line {
-    width: 100%;
-    height: 4px;
-    background: #40E0D0;
-    box-shadow: 0 0 10px #40E0D0;
-    margin-bottom: 20px; /* ✅ Creates spacing between the line and the terminal */
-  }
 
   /* Terminal Wrapper */
   .terminal-wrapper {
     width: 90%;
     max-width: 900px;
-    background: rgba(168, 85, 247, 0.2);
+    background: rgba(0, 0, 0, 0.7);
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
-    position: relative;
-    z-index: 2;
   }
 
   /* Purple Line at the Top */
@@ -168,9 +233,8 @@ const FullScreenSection = styled.section`
     100% { opacity: 1; }
   }
 
-  /* ✅ Responsive Design */
+  /* Responsive Design */
   @media (max-width: 1024px) {
-    /* Tablet */
     .terminal-wrapper {
       width: 95%;
       max-width: 800px;
@@ -184,7 +248,6 @@ const FullScreenSection = styled.section`
   }
 
   @media (max-width: 768px) {
-    /* Mobile */
     .terminal-wrapper {
       width: 98%;
       max-width: 600px;
@@ -203,7 +266,6 @@ const FullScreenSection = styled.section`
   }
 
   @media (max-width: 480px) {
-    /* Small Mobile */
     .terminal-wrapper {
       width: 98%;
       max-width: 90%;

@@ -5,20 +5,17 @@ import Particles from "@/components/Particles";
 import FeatureGrid from "@/components/Featuregrid";
 import Promptbar from "@/components/Promptbar";
 import GradientText from "@/components/Gradienttext";
-import Navbar from "@/components/Navbar"; // Import the Navbar 
+import Navbar from "@/components/Navbar";
 import TerminalSection from "@/components/TerminalAdd";
 
 const Home = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-black ">
-     
-
+    <div className="relative w-full min-h-screen overflow-hidden bg-black">
       {/* Background Effects */}
-      <Aurora colorStops={["#4400ff", "#b41d84", "#3adfc3"]} blend={3.5} amplitude={4.0} speed={0.5} />
       <div className="absolute top-0 left-0 w-full h-screen">
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
-          particleCount={2000}
+          particleCount={20000}
           particleSpread={40}
           speed={0.2}
           particleBaseSize={60}
@@ -28,27 +25,43 @@ const Home = () => {
         />
       </div>
 
-      {/* Hero Section */}
-      <div className="relative w-full h-screen flex flex-col justify-center items-center text-center sm:px-10 mt-7 px-10 py-10">
-        <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight ">
-          »»Code Faster. Customize More. Build Better.««
-        </h1>
+      {/* Floating Purple Border Box */}
+      <div className="relative w-full h-screen flex justify-center items-center">
+        {/* Floating border element (positioned absolutely) */}
+        <div className="absolute inset-0 border-6 border-purple-500 rounded-xl mx-4 sm:mx-10 shadow-[0_0_20px_5px_rgba(168,85,247,0.3)] animate-float" 
+             style={{
+               margin: '5rem',
+               pointerEvents: 'none'
+             }}></div>
+        
+        {/* Stable Content Container (not affected by float) */}
+        <div className="relative z-10 p-8 mx-4 sm:mx-10 backdrop-blur-sm bg-black/30 rounded-lg">
+          {/* Hero Section */}
+          <div className="w-full flex flex-col justify-center items-center text-center">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              »»Code Faster. Customize More. Build Better.««
+            </h1>
 
-        <div className="mt-25 mb-18 text-2xl sm:text-2xl leading-tight md:text-5xl text-white/90">
-        <GradientText
-  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-  animationSpeed={3}
-  showBorder={false}
-  className="custom-class"
->
-  Frontend Development Made Easy!
-</GradientText>
-        </div>
-        <div className="mb-50 mt-25 sm:mt-20 flex sm:flex-row flex-col md:flex-row gap-4 md:gap-8">
-          <Promptbar />
+            <div className="mt-6 mb-8 text-2xl sm:text-2xl leading-tight md:text-5xl text-white/90">
+              <GradientText
+                colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                animationSpeed={3}
+                showBorder={false}
+                className="custom-class"
+              >
+                Frontend Development Made Easy!
+              </GradientText>
+            </div>
+            
+            <div className="mb-6 mt-6 sm:mt-6 flex sm:flex-row flex-col md:flex-row gap-4 md:gap-8">
+              <Promptbar />
+            </div>
+          </div>
         </div>
       </div>
-<TerminalSection /> 
+
+      <TerminalSection />
+      
       {/* Feature Grid Section */}
       <FeatureGrid />
     </div>

@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { Menu, X, Bell } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +14,12 @@ const Navbar = () => {
         <nav className="relative max-w-[85rem] w-full mx-auto md:flex md:items-center md:justify-between md:gap-3 py-2 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-x-1">
             {/* Logo */}
-            <a
+            <Link
               className="flex-none font-semibold text-3xl text-white focus:outline-hidden focus:opacity-80"
               href="https://front-fusion.vercel.app/"
             >
               Front-Fusion A.I
-            </a>
+            </Link>
 
             {/* Mobile Toggle Button */}
             <button
@@ -64,60 +65,60 @@ const Navbar = () => {
                     {/* Dropdown Menu */}
                     {dropdownOpen && (
                       <div className="absolute left-0 mt-2 w-48 bg-black border border-gray-700 rounded-lg shadow-lg">
-                        <a
+                        <Link
                           href="/about"
                           className="block px-4 py-2 text-gray-200 hover:bg-violet-500 rounded-t-lg"
                         >
                           About
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="/downloads"
                           className="block px-4 py-2 text-gray-200 hover:bg-violet-500"
                         >
                           Downloads
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="/team"
                           className="block px-4 py-2 text-gray-200 hover:bg-violet-500 rounded-b-lg"
                         >
                           Team Account
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
 
                   {/* Notifications */}
-                  <a
+                  <Link
                     className="p-2 flex items-center text-sm text-gray-200 hover:bg-violet-500 rounded-lg focus:outline-hidden focus:bg-violet-500"
                     href="#"
                   >
                     <Bell className="size-5 mr-2" />
                     Notifications
-                  </a>
+                  </Link>
 
                   {/* Contact */}
-                  <a
+                  <Link
                     className="p-2 flex items-center text-sm text-gray-200 hover:bg-violet-500 rounded-lg focus:outline-hidden focus:bg-violet-500"
                     href="/contact"
                   >
                     Contact Us
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Button Group */}
                 <div className="flex flex-wrap items-center gap-x-1.5">
-                  <a
+                  <Link
                     className="py-[7px] px-2.5 inline-flex items-center font-medium text-sm rounded-lg border border-gray-700 bg-transparent text-gray-200 hover:bg-violet-700 focus:outline-hidden focus:bg-violet-500"
                     href="/login"
                   >
                     Log in
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="py-2 px-2.5 inline-flex items-center font-medium text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700"
                     href="/signup"
                   >
                     Sign Up
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

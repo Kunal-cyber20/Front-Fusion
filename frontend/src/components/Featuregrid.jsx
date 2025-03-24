@@ -27,7 +27,7 @@ const FeatureGrid = () => {
           speed={0.1}  /* Lower Speed */
           squareSize={50} /* Smaller Square Size */
           direction="diagonal"
-          borderColor="#fff"
+          borderColor="#36dcf2"
           hoverFillColor="#222"
         />
       </div>
