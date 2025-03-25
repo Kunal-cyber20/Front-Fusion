@@ -21,7 +21,7 @@ const FeatureGrid = () => {
       {/* Optimized Purple Line (Static Position, No Reflows) */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-purple-500"></div>
 
-      {/* Squares Effect with Optimized Performance */}
+      {/* Squares Effect*/}
       <div className="absolute inset-0">
         <Squares 
           speed={0.1}  /* Lower Speed */

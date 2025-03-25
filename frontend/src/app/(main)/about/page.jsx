@@ -2,25 +2,27 @@ import React from 'react';
 import Aurora from '@/components/Aurora';  
 import TiltedCard from '@/components/Tiltcard';  
 import Navbar from '@/components/Navbar';
+import Particles from '@/components/Particles';
 
 function AboutUs() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       
-      <div>
-        
-      {/* Aurora Background */}
-      <Aurora
-        colorStops={["#4400ff", "#b41d84", "#3adfc3"]}  
-        blend={1.5}  
-        amplitude={2.0}  
-        speed={0.5}  
-        className="absolute top-0 left-0 w-full h-full"  
-      />
+      <div className="absolute top-0 left-0 w-full h-screen">
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={20000}
+          particleSpread={40}
+          speed={0.06}
+          particleBaseSize={60}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
       </div>
       
       {/* About Us Section */}
-      <div className="mt-1 relative z-10 max-w-4xl mx-auto p-4 text-white">
+      <div className="mt-12 relative z-10 max-w-4xl mx-auto p-4 text-white">
         <h1 className="text-4xl sm:text-5xl font-bold text-center mb-4">
           About Us
         </h1>

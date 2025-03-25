@@ -2,23 +2,28 @@ import React from 'react';
 import Aurora from '@/components/Aurora';  // Assuming Aurora component is already created
 import TiltedCard from '@/components/Tiltcard';  // Assuming you already have this component
 import Navbar from '@/components/Navbar';
+import Particles from '@/components/Particles';
 
 function ContactUs() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       
      
-      {/* Aurora Background */}
-      <Aurora
-        colorStops={["#4400ff", "#b41d84", "#3adfc3"]}  // Custom colors for the Aurora effect
-        blend={1.5}  // Adjust the blend of the colors
-        amplitude={2.0}  // Adjust the intensity of the wave
-        speed={0.5}  // Adjust the speed of the animation
-        className="absolute top-0 left-0 w-full h-full"  // Position the Aurora component in the background
-      />
+      <div className="absolute top-0 left-0 w-full h-screen">
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={20000}
+          particleSpread={40}
+          speed={0.06}
+          particleBaseSize={60}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
 
       {/* Contact Us Section */}
-      <div className="relative z-10 max-w-4xl mx-auto p-4 text-white">
+      <div className="relative mt-10 z-10 max-w-4xl mx-auto p-4 text-white">
         <h1 className="text-4xl sm:text-5xl mt-2 font-bold text-center mb-6">Contact Us</h1>
         
         <div className="text-center mb-6">

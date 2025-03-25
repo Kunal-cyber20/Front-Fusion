@@ -1,16 +1,22 @@
 import React from 'react';
 import Aurora from '@/components/Aurora';
 import Navbar from '@/components/Navbar';
+import Particles from '@/components/Particles';
 const Signup = () => {
   return (
     <div className='relative h-screen bg-black'>
-      {/* Aurora component for background effect */}
-      <Aurora
-        colorStops={["#4400ff", "#b41d84", "#3adfc3"]}
-        blend={1.5}
-        amplitude={2.0}
-        speed={0.5}
-      />
+      <div className="absolute top-0 left-0 w-full h-screen">
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={20000}
+          particleSpread={40}
+          speed={0.06}
+          particleBaseSize={60}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
       
       {/* Centered Signup Form */}
       <div className='shadow-[0px_10px_30px_rgba(64,224,208,0.7)] mt-2 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold  bg-opacity-40 backdrop-blur-lg'>
