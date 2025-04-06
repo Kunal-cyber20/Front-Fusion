@@ -9,6 +9,7 @@ const UserRouter = require('./routers/UserRouter');
 const port = process.env.PORT || 5000;
 
 // middlewares
+app.use(express.json()); // to parse json data
 app.use('/user', UserRouter);
 
 // endpoints or routes
