@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
          {/* Navbar */}
          <Navbar />
         <PrelineScript />
-        <Toaster />
+        <Toaster position="top-center"/>
         {children}
       </body>
     </html>

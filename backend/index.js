@@ -3,12 +3,13 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const UserRouter = require('./routers/UserRouter');
-
+const cors = require('cors');
 //initializing express
 
 const port = process.env.PORT || 5000;
 
 // middlewares
+app.use(cors({origin: '*'})); // to allow cross-origin requests
 app.use(express.json()); // to parse json data
 app.use('/user', UserRouter);
 

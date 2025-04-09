@@ -3,6 +3,8 @@ import React from 'react';
 import Particles from '@/components/Particles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,12 +23,28 @@ const Signup = () => {
       password: '',
       confirmPassword: '',
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       console.log(values);
       // Add your form submission logic here
-      resetForm();
+      try { 
+     const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/user/add`, values);
+
+      console.log(res.data)
+      console.log(res.status)
+      console.log(res.statusText)
+      toast.success('User Registered Successfully!');
+     } catch (error) {
+      if (error?.response?.data.code === 11000) {
+        toast.error('Email Already Exists!');  
+        // The request was made and the server responded with a status code
+      }else{
+      toast.error('Some Error Occured');
+      conbsole.log(error);
+      }
+      }
     },
-    validationSchema: SignupSchema
+    //validationSchema: SignupSchema
   });
   return (
     <div className='relative h-screen bg-black'>
