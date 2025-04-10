@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -15,40 +16,44 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Signup = () => {
+
+    const router = useRouter();
   // Initialize formik with proper syntax
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      confirmPassword: ''
     },
     onSubmit: async (values, { resetForm }) => {
       console.log(values);
       // Add your form submission logic here
-      try { 
-     const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/user/add`, values);
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/add`,
+          values
+        );
 
-      console.log(res.data)
-      console.log(res.status)
-      console.log(res.statusText)
-      toast.success('User Registered Successfully!');
-     } catch (error) {
-      if (error?.response?.data.code === 11000) {
-        toast.error('Email Already Exists!');  
-        // The request was made and the server responded with a status code
-      }else{
-      toast.error('Some Error Occured');
-      conbsole.log(error);
-      }
+        console.log(res.data)
+        console.log(res.status)
+        console.log(res.statusText)
+        toast.success('User Registered Successfully!');
+
+        router.push('/login');
+        resetForm();
+
+      } catch (error) {
+        toast.error(error?.response?.data?.message);
+        console.log(error);
+        setSubmitting(false);
       }
     },
     //validationSchema: SignupSchema
   });
   return (
     <div className='relative h-screen bg-black'>
-      <div className="absolute top-0 left-0 w-full h-screen">
+      <div className="absolute z-[-9] top-0 left-0 w-full h-screen">
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
           particleCount={20000}
@@ -80,7 +85,7 @@ const Signup = () => {
             </div>
             <div className="mt-5">
               <form onSubmit={formik.handleSubmit}>
-                <div className="grid gap-y-4">
+                <div className="grid gap-y-4 z-10">
                   {/* Name Input */}
                   <div>
                     <label htmlFor="name" className="block text-sm mb-2 dark:text-white">
@@ -153,13 +158,13 @@ const Signup = () => {
                     </div>
                   </div>
 
+                </div>
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none mt-4"
+                    className="z-100 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none mt-4"
                   >
                     Sign Up
                   </button>
-                </div>
               </form>
             </div>
           </div>

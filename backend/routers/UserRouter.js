@@ -12,9 +12,12 @@ router.post('/add', (request, response) => {
             response.status(200).json(result);
         })
         .catch((error) => {
+            if(error?.code === 11000){
+                response.status(400).json({ message: 'Email already exists' });
+            }else{
+                response.status(500).json({ message: 'Some error occurred' });
+            }
             console.log(error);
-            response.status(500).json(error);
-            response.status(500).json(error);
         });
 } );
 
