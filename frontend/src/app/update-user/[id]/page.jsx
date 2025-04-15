@@ -1,58 +1,33 @@
 'use client'
-import React from 'react';
-import Particles from '@/components/Particles';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation'
+import React, { useEffect } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
 
-const SignupSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-});
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const Updateuser = () => {
+  
+  const { id } = useParams();
+  const [userData, setUserData] = useState (null);
+    
 
-const Signup = () => {
+  const fetchUserData = async () => {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/user/getbyid/${id}`);
+    console.log(res.data);
+    setUserData(res.data);
+  }
+  
+  useEffect(() => {
+    fetchUserData()
+  }, []);
 
-    const router = useRouter();
-  // Initialize formik with proper syntax
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    },
-    onSubmit: async (values, { resetForm }) => {
-      console.log(values);
-      // Add your form submission logic here
-      try {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/user/add`,
-          values
-        );
+  if(userData === null) {
+    return <p className='text-center my-6 text-gray-300 font-bold'>Loading... </p>
+  }
 
-        console.log(res.data)
-        console.log(res.status)
-        console.log(res.statusText)
-        toast.success('User Registered Successfully!');
-
-        router.push('/login');
-        resetForm();
-
-      } catch (error) {
-        toast.error(error?.response?.data?.message);
-        console.log(error);
-        setSubmitting(false);
-      }
-    },
-    //validationSchema: SignupSchema
-  });
   return (
-    <div className='relative h-screen bg-black'>
+    <div>
+      <div className='relative h-screen bg-black'>
       <div className="absolute z-[-9] top-0 left-0 w-full h-screen">
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
@@ -172,7 +147,8 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default Signup;
+export default Updateuser;

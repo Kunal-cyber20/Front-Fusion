@@ -1,6 +1,7 @@
 const express = require('express');
 const Model = require('../models/UserModels');
 const { model } = require('mongoose');
+require('dotenv').config();
 
 const router = express.Router();
 
@@ -94,8 +95,30 @@ router.delete('/delete/:id', (req, res) => {
         });
 })
 
+router.post('/authenticate', (req, res) => {
+    Model.find(req.body)
+    .then((result) => {
+        if(result){
+            //login success - generate token and send it to client
+            const {_id, name, email, city} = result[0];
+            const payload = { _id, name, email, city };
 
+            jwt.sign(
+                payload,
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }, //tokwn expiry time
+            )
+            
+        }else{
+            //login failed - send error message to client
+            res.status(400).json({ message: 'Invalid Credentials' });
+        }
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
 
+});
+});
 
 
 
